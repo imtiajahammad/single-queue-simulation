@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+
+<h2 align="center">A Single Queue Simulation</h2>
+<h4 align="center">Customers' Random Arrival time differences are from 1 minute to 8 minutes</h4>
+<h4 align="center">There is only one counter to serve</h4>
+<h4 align="center">The service times vary from 1 minute to 6 minutes</h4>
+<br />
+<br />
+<br />
+<h4 align="center">Service Time Probability</h4>
+<table align="center" border="1">
+    <tr align="center">
+        <td align="center"> Services(minutes)</td>
+        <td align="center">1</td>
+        <td align="center">2</td>
+        <td align="center">3</td>
+        <td align="center">4</td>
+        <td align="center">5</td>
+        <td align="center">6</td>
+    </tr>
+    <tr align="center">
+        <td align="center">Probability</td>
+        <td align="center">0.10</td>
+        <td align="center">0.20</td>
+        <td align="center">0.30</td>
+        <td align="center">0.25</td>
+        <td align="center">0.10</td>
+        <td align="center">0.05</td>
+    </tr>
+</table>
+<br />
+<br />
+
+<form method="post" action="@Url.Action("HomeResult", "Home")">
+    <table align="center">
+
+        <tr align="center">
+            <td align="center"><label>Number of customers you want to simulate:   </label></td>
+            <td align="center"><input type="text" name="numberOfSimulation" /></td>
+        </tr>
+        <br />
+        <br />
+        <tr align="center">
+            <td align="right" ><button type="submit">Click to start the simulation</button></td>
+        </tr>
+    </table>
+
+</form>

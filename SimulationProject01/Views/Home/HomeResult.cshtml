@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "HomeResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    //var ArrivalDistribution=ViewBag.ArrivalDistribution;
+    //var ServiceDistribution=ViewBag.ServiceDistribution;
+    //var ArrivalDetermination=ViewBag.ArrivalDetermination;
+    //var ServiceDetermination=ViewBag.ServiceDetermination;
+    //var simulationTableFinal=ViewBag.simulationTableFinal;
+
+    var allTheArrayList = ViewBag.allInfo;
+
+    var calculationInfo = ViewBag.CalculationInfo;
+}
+
+<br />
+<br />
+
+<h2 align="center">Simulation is made for @calculationInfo[0] customers</h2>
+
+<br />
+<br />
+
+<form>
+    <h4 align="center">Distribution of time between arrivals</h4>
+    <table align="center" border="1">
+        <tr>
+            <th align="center">Time between Arrivals</th>
+            <th align="center">Probability</th>
+            <th align="center">Cumulative Probability</th>
+            <th align="center">Random Digit Assignment</th>
+        </tr>
+        @foreach (var ab in allTheArrayList[0])
+        {
+            <tr align="center">
+                <td align="center">@ab.time</td>
+                <td align="center">@ab.probability</td>
+                <td align="center">@ab.cumulativeProbability</td>
+                <td align="center">@ab.randomDigitAssignmentStarts -  @ab.randomDigitAssignmentEnds</td>
+            </tr>
+        }
+    </table>
+
+    <br />
+    <br />
+
+    <h4 align="center">Service Time Distribution</h4>
+    <table align="center" border="1">
+        <tr align="center">
+            <th align="center">Time between Arrivals</th>
+            <th align="center">Probability</th>
+            <th align="center">Cumulative Probability</th>
+            <th align="center">Random Digit Assignment</thalign="center">
+        </tr>
+        @foreach (var abc in allTheArrayList[1])
+        {
+            <tr align="center">
+                <td align="center">@abc.time</td>
+                <td align="center">@abc.probability</td>
+                <td align="center">@abc.cumulativeProbability</td>
+                <td align="center">@abc.randomDigitAssignmentStarts -  @abc.randomDigitAssignmentEnds</td>
+            </tr>
+        }
+    </table>
+
+    <br />
+    <br />
+
+    <h4 align="center">Time between arrival determination</h4>
+    <table align="center" border="1">
+        <tr align="center">
+            <th align="center">Customer</th>
+            <th align="center">Random Digits</th>
+            <th align="center">Time between arrivals (minutes)</th>
+
+        </tr>
+        @foreach (var obj in allTheArrayList[2])
+        {
+            <tr align="center">
+                <td align="center">@obj.customer</td>
+                <td align="center">@obj.randomDigit</td>
+                <td align="center">@obj.time</td>
+
+            </tr>
+        }
+    </table>
+
+    <br />
+    <br />
+
+    <h4 align="center">Service Time Generated</h4>
+    <table border="1" align="center">
+        <tr align="center">
+            <th align="center">Customer</th>
+            <th align="center">Random Digits</th>
+            <th align="center">Time between arrivals (minutes)</th>
+
+        </tr>
+        @foreach (var abcde in allTheArrayList[3])
+        {
+            <tr align="center">
+                <td align="center">@abcde.customer</td>
+                <td align="center">@abcde.randomDigit</td>
+                <td align="center">@abcde.time</td>
+
+            </tr>
+        }
+    </table>
+
+    <br />
+    <br />
+
+    <h4 align="center">
+        Simulation table for queueing problem</h4>
+        <table align="center" border="1">
+            <tr align="center">
+
+                <th align="center">Customer</th>
+                <th align="center">Time Between Arrivals</th>
+                <th align="center">Arrival Time</th>
+                <th align="center">Service Time</th>
+                <th align="center">Service Time Begins</th>
+                <th align="center">Time Customer Waits In Queue</th>
+                <th align="center">Service Time Ends</th>
+                <th align="center">Time Customer Spends In System</th>
+                <th align="center">Idle Time Of Server</th>
+            </tr>
+            @foreach (var abcde in allTheArrayList[4])
+            {
+                <tr align="center">
+                    <td align="center">@abcde.customer</td>
+                    <td align="center">@abcde.timeBetweenArrival</td>
+                    <td align="center">@abcde.arrivalTime</td>
+                    <td align="center">@abcde.serviceTime</td>
+                    <td align="center">@abcde.serviceTimeBegins</td>
+                    <td align="center">@abcde.timeCustomerWaitsInQueue</td>
+                    <td align="center">@abcde.serviceTimeEnds</td>
+                    <td align="center">@abcde.timeCustomerSpendsInSystem</td>
+                    <td align="center">@abcde.idleTimeOfServer</td>
+
+
+
+                </tr>
+            }
+        </table>
+        <br />
+        <br />
+        
+        <table align="center">
+            
+                <tr align="center"> <h4 >Summary for the Simulation:</h4> </tr>
+                <tr align="center"> <p >Total Customer: @calculationInfo[0]</p> </tr>
+                <tr align="center"> <p >Total Service Time: @calculationInfo[1] minutes</p> </tr>
+                <tr align="center"> <p >Total time Customer waits in queue: @calculationInfo[2] minutes</p> </tr>
+                <tr align="center"> <p >Total time Customer spends in system: @calculationInfo[3] minutes</p> </tr>
+                <tr align="center"> <p >Total idle time of server: @calculationInfo[4] minutes</p> </tr>
+                <tr align="center"> <p >Average Waiting time: @calculationInfo[5] minutes</p></tr>
+                <tr align="center"> <p >Probability of waithing in queue: @calculationInfo[6]</p> </tr>
+                <tr align="center"> <p >Probability of idle server: @calculationInfo[7]</p> </tr>
+                <tr align="center"> <p >Average Service time: @calculationInfo[8] minutes</p> </tr>
+                <tr align="center"> <p >Average time between arivals: @calculationInfo[9] minutes</p> </tr>
+                <tr align="center"> <p >Average Waiting time of those who wait: @calculationInfo[10] minutes</p> </tr>
+                <tr align="center"> <p >Average time customer spends in the system: @calculationInfo[11] minutes</p> </tr>
+                <tr align="center"> <p >Average Time Customer Spends In The System: @calculationInfo[12] minutes</p> </tr>
+            
+        </table>
+</form>
+
